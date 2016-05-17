@@ -22,16 +22,16 @@ public class LPProblem {
 		System.out.println();
 		String objectiveFunction = c[0] + "*x1";
 		for (int i = 1; i < this.c.length; i++) {
-			objectiveFunction += " + " + c[i] + "*x" + (i + 1);
+			objectiveFunction += (c[i]>=0?" + ":" - ") + Math.abs(c[i]) + "*x" + (i + 1);
 		}
-		objectiveFunction += "---->";
+		objectiveFunction += " ----> ";
 		objectiveFunction += maximization ? "max" : "min";
 		System.out.println(objectiveFunction);
 
 		for (int i = 0; i < this.A.length; i++) {
 			String constraint = A[i][0] + "*x1";
 			for (int j = 1; j < this.A[i].length; j++) {
-				constraint += " + " + A[i][j] + "*x" + (j + 1);
+				constraint += (A[i][j]>=0?" + ":" - ") + Math.abs(A[i][j]) + "*x" + (j + 1);
 			}
 			switch (inequalities[i]) {
 			case LOWER_EQUAL:
